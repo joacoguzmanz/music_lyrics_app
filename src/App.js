@@ -1,24 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import Navbar from "./components/layout/Navbar";
+import Index from "./components/layout/Index";
+import Lyrics from "./components/tracks/Lyrics";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {dataMMContext} from "./Context";
 
 function App() {
+  const [tracks, setTracks] = useState([]);
+
+  useEffect(() => {
+      axios.get(`https://api.musixmatch.com/ws/1.1/chart.tracks.get?chart_name=top&page=1&page_size=10&country=us&f_has_lyrics=1&apikey=${process.env.REACT_APP_MM_KEY}`)
+          .then(res => {
+              setTracks(res.data.message.body.track_list);
+          })
+          .catch(err => console.log(err))
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <dataMMContext.Provider value={tracks}>
+          <BrowserRouter>
+              <>
+                  <Navbar />
+                  <div className='mx-5'>
+                      <Routes>
+                          <Route path='/' element={<Index />} />
+                          <Route path='/lyrics/track/:id' element={<Lyrics />} />
+                      </Routes>
+                  </div>
+              </>
+          </BrowserRouter>
+      </dataMMContext.Provider>
   );
 }
 
