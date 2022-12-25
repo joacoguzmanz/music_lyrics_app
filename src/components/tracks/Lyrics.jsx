@@ -27,24 +27,33 @@ const Lyrics = () => {
             .catch(err => console.log(err))
     }, [])
 
+    if (track === undefined || lyrics === undefined || Object.keys(track).length === 0 || Object.keys(lyrics).length === 0) {
+        return (
+            <>
+                <h1 className='text-orange-400'>Loading...</h1>
+            </>
+        )
+    } else {
+        return (
+            <>
+                <h1 className='mb-9'>Lyrics of {track.track_name} by {track.artist_name}</h1>
 
-    return (
-        <>
-            <h1 className='mb-9'>Lyrics of {track.track_name} by {track.artist_name}</h1>
+                <p className='mb-9'>{lyrics.lyrics_body}</p>
 
-            <p className='mb-9'>{lyrics.lyrics_body}</p>
+                <h3>
+                    {typeof track.primary_genres === 'undefined' || track.primary_genres === null
+                        ? "No genre"
+                        : track.primary_genres.music_genre_list.map(
+                            item => item.music_genre.music_genre_name
+                        )}
+                </h3>
 
-            <h3>
-                {typeof track.primary_genres === 'undefined' || track.primary_genres === null
-                ? "No genre"
-                : track.primary_genres.music_genre_list.map(
-                        item => item.music_genre.music_genre_name
-                    )}
-            </h3>
-            
-            <Link to='/' className='inline-block py-3 px-5 mt-10 bg-slate-100 rounded-full'>Go back</Link>
-        </>
-    );
+                <p>Explicit? {track.explicit === 0 ? 'No' : 'Yes'}</p>
+
+                <Link to='/' className='inline-block py-3 px-5 mt-10 bg-slate-100 rounded-full'>Go back</Link>
+            </>
+        )
+    }
 }
 
 export default Lyrics;
