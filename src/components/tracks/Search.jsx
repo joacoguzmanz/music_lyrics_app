@@ -4,13 +4,13 @@ import { useContext } from "react";
 import { dataMMContext } from "../../Context";
 
 const Search = () => {
-    const {trackList} = useContext(dataMMContext);
+    const {tracks} = useContext(dataMMContext);
     const [trackTitle, setTrackTitle] = useState('');
 
     const findTrack = (e) => {
         e.preventDefault();
 
-        axios.get(`https://api.musixmatch.com/ws/1.1/track.search?q_track=${trackTitle}&page_size=6&page=1&s_track_rating=desc&apikey=${process.env.REACT_APP_MM_KEY}`)
+        axios.get(`https://api.musixmatch.com/ws/1.1/track.search?q_track=${trackTitle}&page_size=10&page=1&s_track_rating=desc&apikey=${process.env.REACT_APP_MM_KEY}`)
             .then(res => {
                 console.log(res.data);
             })
