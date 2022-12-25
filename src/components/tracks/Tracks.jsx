@@ -3,9 +3,10 @@ import {dataMMContext} from "../../Context";
 import Track from "./Track";
 
 const Tracks = () => {
-    const trackList = useContext(dataMMContext);
+    // const { trackList } = useContext(dataMMContext);
+    const {tracks, heading} = useContext(dataMMContext)
 
-    if(trackList === undefined || trackList.length === 0) {
+    if(tracks === undefined || tracks.length === 0) {
         return (
             <>
                 <h1 className='text-orange-400'>Loading...</h1>
@@ -14,8 +15,8 @@ const Tracks = () => {
     } else {
         return (
             <>
-                <h3>Section title</h3>
-                {trackList.map(item => (
+                <h3>{heading}</h3>
+                {tracks.map(item => (
                     <Track key={item.track.track_id} track={item.track} />
                 ))}
             </>

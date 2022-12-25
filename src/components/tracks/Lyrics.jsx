@@ -4,12 +4,15 @@ import {Link, useParams} from "react-router-dom";
 import {dataMMContext} from "../../Context";
 
 const Lyrics = () => {
+    const {allTracks, heading} = useContext(dataMMContext);
     let { id } = useParams();
-    const trackList = useContext(dataMMContext);
     const [lyrics, setLyrics] = useState([]);
     const [track, setTrack] = useState([]);
 
-    const newArr = trackList.filter(item => {
+    console.log(allTracks);
+    console.log(heading);
+
+    const newArr = allTracks.filter(item => {
         return item.track.track_id === parseInt(id)
     })
     let commonTrackId = newArr[0].track.commontrack_id;

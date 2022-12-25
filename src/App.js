@@ -18,7 +18,7 @@ function App() {
   }, []);
 
   return (
-      <dataMMContext.Provider value={tracks}>
+      <dataMMContext.Provider value={{tracks, heading: 'Top 10 tracks'}}>
           <BrowserRouter>
               <>
                   <Navbar />
