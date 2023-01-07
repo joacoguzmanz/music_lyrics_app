@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { useState, useEffect } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { useContext } from "react";
 import { dataMMContext } from "../../Context";
 
@@ -24,14 +26,13 @@ const Search = () => {
     }
 
     return (
-        <>
-            <h1>Search the song you want!</h1>
-            <p>Find any song you like</p>
-            <form onSubmit={findTrack}>
-                <input type='text' placeholder='Song title...' name='trackTitle' value={trackTitle} onChange={onChange} />
-                <button className='py-3 px-5 bg-slate-100 rounded-full ml-4'>Search</button>
+        <div className='px-4 py-6 mt-3 mb-10 rounded-md bg-green-400'>
+            <h1 className='text-gray-900 text-2xl font-medium font-poppins mb-3'>Discover</h1>
+            <form onSubmit={findTrack} className='flex justify-between'>
+                <input type='text' placeholder='Search your favourite song' name='trackTitle' value={trackTitle} onChange={onChange} className='w-full bg-slate-100 rounded-lg pl-4 font-poppins' />
+                <button className='py-3 px-5 bg-slate-100 rounded-lg ml-2'><FontAwesomeIcon icon={ faMagnifyingGlass} /></button>
             </form>
-        </>
+        </div>
     )
 }
 

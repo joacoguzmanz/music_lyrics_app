@@ -1,6 +1,8 @@
 import axios from "axios";
 import {useState, useEffect, useContext} from "react";
 import {Link, useParams} from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import {dataMMContext} from "../../Context";
 
 const Lyrics = () => {
@@ -50,7 +52,9 @@ const Lyrics = () => {
 
                 <p>Explicit? {track.explicit === 0 ? 'No' : 'Yes'}</p>
 
-                <Link to='/' className='inline-block py-3 px-5 mt-10 bg-slate-100 rounded-full'>Go back</Link>
+                <Link to='/' className='inline-block py-3 px-5 mt-10 bg-slate-100 rounded-full'>
+                    <FontAwesomeIcon icon={faArrowLeft} className='mr-2' /> Go back
+                </Link>
             </>
         )
     }

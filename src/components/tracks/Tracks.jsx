@@ -15,7 +15,7 @@ const Tracks = () => {
     } else {
         return (
             <>
-                <h3>{heading}</h3>
+                <h3 className='text-center text-xl font-medium mb-5'>{heading}</h3>
                 {tracks.map(item => (
                     <Track key={item.track.track_id} track={item.track} />
                 ))}
