@@ -3,7 +3,6 @@ import {dataMMContext} from "../../Context";
 import Track from "./Track";
 
 const Tracks = () => {
-    // const { trackList } = useContext(dataMMContext);
     const {tracks, heading} = useContext(dataMMContext)
 
     if(tracks === undefined || tracks.length === 0) {
