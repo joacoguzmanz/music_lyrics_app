@@ -1,22 +1,38 @@
 import axios from 'axios';
-import { useState } from "react";
+import {useState, useContext, useReducer} from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
-// import { useContext } from "react";
-// import { dataMMContext, searchDispatchContext } from "../../Context";
+import {dataMMContext} from "../../Context";
+
+const searchReducer = (state, action) => {
+    switch (action.type) {
+        case 'SEARCH_TRACKS':
+            return {
+                tracks: action.payload,
+                heading: action.heading
+            }
+        default:
+            throw new Error('Not recognized action' + action.type)
+    }
+}
 
 const Search = () => {
-    // const {tracks} = useContext(dataMMContext);
-    // const dispatch = useContext(searchDispatchContext);
     const [trackTitle, setTrackTitle] = useState('');
+    const {tracks} = useContext(dataMMContext);
+    const [searchedTracks, dispatch] = useReducer(searchReducer, tracks);
+
+    console.log(searchedTracks)
 
     const findTrack = (e) => {
         e.preventDefault();
 
         axios.get(`https://api.musixmatch.com/ws/1.1/track.search?q_track=${trackTitle}&page_size=10&page=1&s_track_rating=desc&apikey=${process.env.REACT_APP_MM_KEY}`)
             .then(res => {
-                // Here I'll use dispatch and will pass object with type SEARCH_TRACKS and api response tracks
-                console.log(res.data);
+                dispatch({
+                    type: 'SEARCH_TRACKS',
+                    payload: res.data.message.body.track_list,
+                    heading: 'search results'
+                })
             })
             .catch(err => {
                 console.log(err);
