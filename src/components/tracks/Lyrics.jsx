@@ -27,6 +27,7 @@ const Lyrics = () => {
                 setTrack(res.data.message.body.track);
             })
             .catch(err => console.log(err))
+        // eslint-disable-next-line
     }, [])
 
     if (track === undefined || lyrics === undefined || Object.keys(track).length === 0 || Object.keys(lyrics).length === 0) {
@@ -40,7 +41,7 @@ const Lyrics = () => {
             <>
                 <div className='mb-8 mt-4'>
                     <h1 className='mb-5 text-3xl font-semibold text-center'>{track.track_name}</h1>
-                    <div className='flex justify-around py-'>
+                    <div className='flex justify-around'>
                         <div className=''>
                             <h3 className='text-sm'><FontAwesomeIcon icon={ faUser } /> Artist</h3>
                             <p className='font-medium'>{track.artist_name}</p>
@@ -55,13 +56,13 @@ const Lyrics = () => {
                 <p className='mb-8 leading-relaxed'>{lyrics.lyrics_body}</p>
 
                 <h3 className='text-xl mb-1'>Genres</h3>
-                <p className='bg-slate-200 rounded-full py-1 px-4 w-fit'>
+                <div className="flex gap-2.5 flex-wrap">
                     {typeof track.primary_genres === 'undefined' || track.primary_genres === null
                         ? "No genre"
                         : track.primary_genres.music_genre_list.map(
-                            item => item.music_genre.music_genre_name
+                            item => <p className='bg-slate-200 rounded-full py-1 px-4 w-fit'>{item.music_genre.music_genre_name}</p>
                         )}
-                </p>
+                </div>
 
                 {
                     track.explicit === 0
@@ -70,7 +71,7 @@ const Lyrics = () => {
                 }
 
 
-                <Link to='/' className='inline-block py-3 px-5 bg-slate-100 rounded-full'>
+                <Link to='/' className='inline-block py-3 px-5 bg-slate-100 rounded-full mb-5'>
                     <FontAwesomeIcon icon={faArrowLeft} className='mr-2' /> Go back
                 </Link>
             </>

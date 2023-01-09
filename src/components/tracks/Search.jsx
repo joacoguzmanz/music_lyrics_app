@@ -1,27 +1,12 @@
 import axios from 'axios';
-import {useState, useContext, useReducer} from "react";
+import {useState, useContext} from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
-import {dataMMContext} from "../../Context";
-
-const searchReducer = (state, action) => {
-    switch (action.type) {
-        case 'SEARCH_TRACKS':
-            return {
-                tracks: action.payload,
-                heading: action.heading
-            }
-        default:
-            throw new Error('Not recognized action' + action.type)
-    }
-}
+import {searchTracksContext} from "../../Context";
 
 const Search = () => {
     const [trackTitle, setTrackTitle] = useState('');
-    const {tracks} = useContext(dataMMContext);
-    const [searchedTracks, dispatch] = useReducer(searchReducer, tracks);
-
-    console.log(searchedTracks)
+    const dispatch = useContext(searchTracksContext);
 
     const findTrack = (e) => {
         e.preventDefault();
@@ -31,8 +16,10 @@ const Search = () => {
                 dispatch({
                     type: 'SEARCH_TRACKS',
                     payload: res.data.message.body.track_list,
-                    heading: 'search results'
+                    heading: 'Search results'
                 })
+
+                setTrackTitle('')
             })
             .catch(err => {
                 console.log(err);
