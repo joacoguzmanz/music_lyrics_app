@@ -4,6 +4,7 @@ import {Link, useParams} from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faRecordVinyl, faUser, faTriangleExclamation, faThumbsUp } from '@fortawesome/free-solid-svg-icons'
 import {dataMMContext} from "../../Context";
+import Loader from "../layout/Loader";
 
 const Lyrics = () => {
     const {tracks} = useContext(dataMMContext);
@@ -33,13 +34,13 @@ const Lyrics = () => {
     if (track === undefined || lyrics === undefined || Object.keys(track).length === 0 || Object.keys(lyrics).length === 0) {
         return (
             <>
-                <h1 className='text-orange-400'>Loading...</h1>
+                <Loader />
             </>
         )
     } else {
         return (
             <>
-                <div className='mb-8 mt-4'>
+                <div className='my-8'>
                     <h1 className='mb-5 text-3xl font-semibold text-center'>{track.track_name}</h1>
                     <div className='flex justify-around'>
                         <div className=''>

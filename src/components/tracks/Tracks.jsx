@@ -1,5 +1,6 @@
 import {useContext} from "react";
 import {dataMMContext} from "../../Context";
+import Loader from "../layout/Loader";
 import Track from "./Track";
 
 const Tracks = () => {
@@ -8,7 +9,7 @@ const Tracks = () => {
     if(tracks === undefined || tracks.length === 0) {
         return (
             <>
-                <h1 className='text-orange-400'>Loading...</h1>
+                <Loader />
             </>
         )
     } else {
