@@ -31,7 +31,7 @@ const Search = () => {
     }
 
     return (
-        <div className='px-4 py-6 mt-3 mb-10 rounded-md bg-green-400'>
+        <div className='px-4 py-6 my-10 rounded-md bg-green-400'>
             <h1 className='text-gray-900 text-2xl font-medium font-poppins mb-3'>Discover</h1>
             <form onSubmit={findTrack} className='flex justify-between'>
                 <input type='text' placeholder='Search your favourite song' name='trackTitle' value={trackTitle} onChange={onChange} className='w-full bg-slate-100 rounded-lg pl-4 font-poppins' />

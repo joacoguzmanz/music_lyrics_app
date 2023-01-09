@@ -60,7 +60,7 @@ const Lyrics = () => {
                     {typeof track.primary_genres === 'undefined' || track.primary_genres === null
                         ? "No genre"
                         : track.primary_genres.music_genre_list.map(
-                            item => <p className='bg-slate-200 rounded-full py-1 px-4 w-fit'>{item.music_genre.music_genre_name}</p>
+                            item => <p key={item.music_genre.music_genre_id} className='bg-slate-200 rounded-full py-1 px-4 w-fit'>{item.music_genre.music_genre_name}</p>
                         )}
                 </div>
 
