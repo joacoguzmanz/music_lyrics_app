@@ -1,70 +1,56 @@
-# Getting Started with Create React App
+# Lyrics Search App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Simple app to search song's lyrics.
 
-## Available Scripts
+**Objective:** Improve my abilities working with React, React Router and fetching data with APIs.
 
-In the project directory, you can run:
+## Description
 
-### `npm start`
+The app has two main parts: the search bar and the tracks list. The first one allows the user to search
+any song they like. The track list shows the ten most popular songs when the app first loads
+and is updated to show the search results.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### How it works
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The track list makes a call to the Musixmatch API and pass the response to the dispatch function. From there,
+I pass the tracks through the context provider, so I can use them in all the components down the tree.
+The dispatch function is also passed in another context provider. Once the user searches for a song, the dispatch
+function is used to update the state of the track list with the new ones.
 
-### `npm test`
+## Challenges
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+While I was following a video tutorial to guide me, I had to solve some problems to complete my app.
 
-### `npm run build`
+First, the tutorial is from three years ago and used class components. I made the app with function components
+and hooks. I also had to learn about context in React as I have never used it before. Finally, the part that I
+found the most complicated was creating the reducer function and passing it through context but, after reading
+the documentation and many trials and errors, I could sort it out. 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## What I learned
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Some key points I take away from the project:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Learned how context works and why it is useful
+- Work with useReducer(), useContext() hooks for the first time 
+- How reducer functions work and how to dispatch actions
+- Improved my comprehension of component's state
+- Improved my knowledge of React Router
+- Styling with TailwindCSS 
+- Use of axios for API data fetching
 
-### `npm run eject`
+## Tech Stack and Tools
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- ![image](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+- ![image](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
+- ![image](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
+- ![image](https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white)
+- ![image](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+- ![image](https://img.shields.io/badge/WebStorm-000000?style=for-the-badge&logo=WebStorm&logoColor=white)
+- Axios
+- Font Awesome
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Acknowledgements
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The inspiration for this project came from this [series of videos](https://www.youtube.com/watch?v=NDEt0KdDbhk) from [Brad Traversy](https://github.com/bradtraversy).
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+You can visit his YouTube Channel [here](https://www.youtube.com/@TraversyMedia).
