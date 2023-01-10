@@ -54,3 +54,7 @@ Some key points I take away from the project:
 The inspiration for this project came from this [series of videos](https://www.youtube.com/watch?v=NDEt0KdDbhk) from [Brad Traversy](https://github.com/bradtraversy).
 
 You can visit his YouTube Channel [here](https://www.youtube.com/@TraversyMedia).
+
+## Notes
+
+When trying to load the content from the API had to use this [Chrome extension](https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf) to solve the CORS problem.
