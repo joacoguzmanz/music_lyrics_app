@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/music_lyrics_app/static/css/main.e2432d1c.css",
+    "main.js": "/music_lyrics_app/static/js/main.ca137f2a.js",
+    "index.html": "/music_lyrics_app/index.html",
+    "main.e2432d1c.css.map": "/music_lyrics_app/static/css/main.e2432d1c.css.map",
+    "main.ca137f2a.js.map": "/music_lyrics_app/static/js/main.ca137f2a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e2432d1c.css",
+    "static/js/main.ca137f2a.js"
+  ]
+}
