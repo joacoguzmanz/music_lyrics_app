@@ -72,7 +72,7 @@ const Lyrics = () => {
                 }
 
 
-                <Link to='/' className='inline-block py-3 px-5 bg-slate-100 rounded-full mb-5'>
+                <Link to='/music_lyrics_app/' className='inline-block py-3 px-5 bg-slate-100 rounded-full mb-5'>
                     <FontAwesomeIcon icon={faArrowLeft} className='mr-2' /> Go back
                 </Link>
             </>
