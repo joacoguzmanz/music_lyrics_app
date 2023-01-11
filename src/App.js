@@ -46,8 +46,8 @@ function App() {
                       <Navbar />
                       <div className='mx-5 md:mx-auto md:max-w-md'>
                           <Routes>
-                              <Route path='/' element={<Index />} />
-                              <Route path='/lyrics/track/:id' element={<Lyrics />} />
+                              <Route path='/music_lyrics_app/' element={<Index />} />
+                              <Route path='/music_lyrics_app/lyrics/track/:id' element={<Lyrics />} />
                           </Routes>
                       </div>
                   </>
